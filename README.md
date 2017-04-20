@@ -1,4 +1,16 @@
-[![Build Status](https://travis-ci.org/ciryon/OCUnit2JUnit.png)](https://travis-ci.org/ciryon/OCUnit2JUnit)
+mikelupo's fix:
+
+"Before this change, the parser would just start over for a given
+suite in the case where a crash occured during the run.
+That being, if a suite contained 10 tests, and the app under test
+crashed during test 5, XCUnit would restart
+itself but OCUnit2Junit would lose the status of the previously
+ran tests up to the point of the restart. Hence, we'd end up with
+results for 6-10, The results from 1-4 would be lost as well as
+from 5 (containing the crash info).
+
+This commit attempts to handle this case."
+
 
 Introduction
 ======================
